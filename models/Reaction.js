@@ -6,10 +6,9 @@ const reactionSchema = new Schema({
         type: Types.ObjectId,
         default: new Types.ObjectId()
     },
-    thoughtText: {
+    reactionBody: {
         type: String,
         required: true,
-        minLength: 1,
         maxLength: 280
     },
     username: {
@@ -20,10 +19,13 @@ const reactionSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+    }
+},
+{
+    toJSON: {
+        getters: true
     },
-    reactions: []
+    id: false
 });
 
-const Reaction = model('Reaction', reactionSchema);
-
-module.exports = Reaction;
+module.exports = reactionSchema;
