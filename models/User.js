@@ -1,4 +1,4 @@
-const { Schema, model } = require{'mongoose'};
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     username: {
@@ -14,14 +14,8 @@ const userSchema = new Schema({
         // REGEX used to validate email
         match: [/.+@.+\..+/]
     },
-    thoughts: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Thought'
-    }],
-    friends: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+    thoughts: [{ type: Schema.Types.ObjectId, ref: 'Thought' }],
+    friends: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 },
 {
     toJSON: {
